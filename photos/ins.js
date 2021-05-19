@@ -116,21 +116,20 @@
         var data = res.list[j].arr;
         var liTmpl = "";
         for (var i = 0, len = data.link.length; i < len; i++) {
-          // 需要修改https://raw.githubusercontent.com/你的github名/你的github仓库名/master/min_photos/即可
-          var minSrc = 'https://raw.githubusercontent.com/tangzhihui520/tangzhihui520.github.io/main/Blog_Album/img/min_photos/' + data.link[i];
+          var minSrc = 'https://raw.githubusercontent.com/tangzhihui520/tangzhihui520.github.io/main/Blog_Album/img/min_photos/' + data.link[i] + '.min.jpg';
           var src = 'https://raw.githubusercontent.com/tangzhihui520/tangzhihui520.github.io/main/Blog_Album/img/photos/' + data.link[i];
           var type = data.type[i];
           var target = src + (type === 'video' ? '.mp4' : '.jpg');
-          src += '';
+          src += '.jpg';
 
           liTmpl += '<figure class="thumb" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject">\
-                <a href="' + src + '" itemprop="contentUrl" data-size="1080x1080" data-type="' + type + '" data-target="' + src + '">\
-                  <img class="reward-img" data-type="' + type + '" data-src="' + minSrc + '" src="assets//img//empty.png" itemprop="thumbnail" onload="lzld(this)">\
+                <a href="' + src + '" itemprop="contentUrl" data-size="640x640" data-type="' + type + '" data-target="' + target + '">\
+                  <img class="reward-img" data-type="' + type + '" data-src="' + minSrc + '" src="/assets/img/empty.png" itemprop="thumbnail" onload="lzld(this)">\
                 </a>\
                 <figcaption style="display:none" itemprop="caption description">' + data.text[i] + '</figcaption>\
             </figure>';
         }
-        ulTmpl = ulTmpl + '<section class="archives album"><h1 class="year">' + data.year + '年<em>' + data.month + '月</em></h1>\
+        ulTmpl = ulTmpl + '<section class="archives album"><h1 class="year">' + data.year + '<em>' + data.month + '月</em></h1>\
         <ul class="img-box-ul">' + liTmpl + '</ul>\
         </section>';
       }
@@ -141,7 +140,7 @@
 
     var replacer = function replacer(str) {
       var arr = str.split("/");
-      return "/photos/assets/ins/" + arr[arr.length - 1];
+      return "/assets/ins/" + arr[arr.length - 1];
     };
 
     var ctrler = function ctrler(data) {
@@ -170,7 +169,7 @@
     function loadData(success) {
       if (!searchData) {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', './data.json?t=' + +new Date(), true);
+        xhr.open('GET', './ins.json?t=' + +new Date(), true);
 
         xhr.onload = function() {
           if (this.status >= 200 && this.status < 300) {
@@ -481,20 +480,24 @@
         items = parseThumbnailElements(galleryElement);
         // define options (if needed)
         options = {
+
           // define gallery index (for URL)
           galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
           getThumbBoundsFn: function getThumbBoundsFn(index) {
             // See Options -> getThumbBoundsFn section of documentation for more info
             var thumbnail = items[index].el.getElementsByTagName('img')[0],
               // find thumbnail
               pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
               rect = thumbnail.getBoundingClientRect();
+
             return {
               x: rect.left,
               y: rect.top + pageYScroll,
               w: rect.width
             };
           }
+
         };
 
         // PhotoSwipe opened from URL
