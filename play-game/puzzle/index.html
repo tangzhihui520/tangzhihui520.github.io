@@ -10,15 +10,15 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="JS 小游戏    html, body{    padding:0px;    margin:0px;    font-family: &#39;Raleway&#39;, sans-serif;    color:#FFF;    height:100%;  }    .container{    max-width:200px;    background:rgba(0, 0, 0, 0.75);">
+  <meta name="description" content="拼图                          步数：0         换一个         重置         显示序号         显示答案                            1         2         3         4         5         6">
 <meta property="og:type" content="website">
 <meta property="og:title" content="一个爱打篮球的程序猿">
-<meta property="og:url" content="https://tangzhihui520.github.io/play-game/index.html">
+<meta property="og:url" content="https://tangzhihui520.github.io/play-game/puzzle/index.html">
 <meta property="og:site_name" content="一个爱打篮球的程序猿">
-<meta property="og:description" content="JS 小游戏    html, body{    padding:0px;    margin:0px;    font-family: &#39;Raleway&#39;, sans-serif;    color:#FFF;    height:100%;  }    .container{    max-width:200px;    background:rgba(0, 0, 0, 0.75);">
+<meta property="og:description" content="拼图                          步数：0         换一个         重置         显示序号         显示答案                            1         2         3         4         5         6">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-05-28T11:21:13.373Z">
-<meta property="article:modified_time" content="2021-05-28T11:21:13.373Z">
+<meta property="article:published_time" content="2021-05-26T12:36:39.092Z">
+<meta property="article:modified_time" content="2021-05-26T12:18:10.286Z">
 <meta property="article:author" content="tangzhihui">
 <meta name="twitter:card" content="summary">
   
@@ -333,116 +333,51 @@ var _hmt = _hmt || [];
     
   <div class="article-entry" itemprop="articleBody">
     
-    
-<!doctype html>
-<html>
+    <!doctype html>
+<html lang="">
+
 <head>
-<meta charset="utf-8">
-<title>JS 小游戏 </title>
-
-<style>
-html, body{
-   padding:0px;
-   margin:0px;
-   font-family: 'Raleway', sans-serif;
-   color:#FFF;
-   height:100%;
-
-}
-
-
-
-.container{
-   max-width:200px;
-   background:rgba(0, 0, 0, 0.75);
-   margin:40px auto;
-   padding:10px 0px 20px 0px;
-   border:1px solid #111;
-   border-radius:4px;
-   box-shadow:0px 4px 5px rgba(0, 0, 0, 0.75);
-}
-.link{
-   font-size:16px;
-   font-weight:300;
-   text-align:center;
-   position:relative;
-   height:40px;
-   line-height:40px;
-   margin-top:10px;
-   overflow:hidden;
-   width:90%;
-   margin-left:5%;
-   cursor:pointer;
-}
-.link:after{
-   content: '';
-   position:absolute;
-   width:80%;
-   border-bottom:1px solid rgba(255, 255, 255, 0.5);
-   bottom:50%;
-   left:-100%;
-   transition: all 0.5s;
-}
-.link:hover:after,
-.link.hover:after{
-   left:100%;
-}
-.link .text{
-   text-shadow:0px -40px 0px rgba(255, 255, 255, 1);
-   transition:all 0.75s;
-   transform:translateY(100%) translateZ(0);
-}
-.link:hover .text,
-.link.hover .text{
-   text-shadow:0px -40px 0px rgba(255, 255, 255, 0);
-   transform:translateY(0%) translateZ(0) scale(1.1);
-   font-weight:600;
-}</style>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>拼图</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+    <h1>
+        <div>步数：<span class="step">0</span></div>
+        <button id="change">换一个</button>
+        <button class="reset">重置</button>
+        <button id="showNum">显示序号</button>
+        <button id="showAnswer">显示答案</button>
+    </h1>
+    <div id="main">
+        <div id="block_0" class="empty"></div>
+        <div id="block_1" class="block"><span>1</span></div>
+        <div id="block_2" class="block"><span>2</span></div>
+        <div id="block_3" class="block"><span>3</span></div>
+        <div id="block_4" class="block"><span>4</span></div>
+        <div id="block_5" class="block"><span>5</span></div>
+        <div id="block_6" class="block"><span>6</span></div>
+        <div id="block_7" class="block"><span>7</span></div>
+        <div id="block_8" class="block"><span>8</span></div>
+    </div>
 
-<div class="container">
-  <div class="link">
-    <div class="text" ><a href="./doushouqi/index.html" >斗兽棋</a></div>
-  </div>
-  <div class="link">
-    <div class="text" ><a href="tangzhihui520.github.io/puzzle" >拼图小游戏</a></div>
-  </div>
-  
-  
-  <div class="link">
-    <div class="text"><a href="./tuixiangzixiaoyouxi/index.html" >推箱子小游戏</a></div>
-  </div>
-  
-  <div class="link">
-    <div class="text"><a href="./quanxiaomao/index.html">圈小猫</a></div>
-  </div>
-</div>
-
-<script>
-//For Demo only
-var links = document.getElementsByClassName('link');
-for(var i = 0; i <= links.length; i++){
-    addClass(i);
-
-}
-
-function addClass(id){
-   setTimeout(function(){
-      if(id > 0) links[id-1].classList.remove('hover');
-      links[id].classList.add('hover');
-   }, id*750);
-}
-</script>
-
-<div style="text-align:center;clear:both">
-<!--<script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>-->
-<!--<script src="/follow.js" type="text/javascript"></script>-->
-</div>
-
+    <div id="success">
+        <h2>Success</h2>
+        <p>步数：<span class="step">0</span></p>
+        <button class="reset">再来一次</button>
+    </div>
+    <p class='tips'>上：W &nbsp;&nbsp;&nbsp;&nbsp;下：S &nbsp;&nbsp;&nbsp;&nbsp;左：A &nbsp;&nbsp;&nbsp;&nbsp;右：D</p>
+    <div class="answer"></div>
 </body>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/touch-0.2.14.min.js"></script>
+<script src="js/main.js"></script>
 </html>
-
 
     
 
@@ -484,7 +419,7 @@ function addClass(id){
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://tangzhihui520.github.io/play-game/index.html" title="" target="_blank">https://tangzhihui520.github.io/play-game/index.html</a>
+          <a href="https://tangzhihui520.github.io/play-game/puzzle/index.html" title="" target="_blank">https://tangzhihui520.github.io/play-game/puzzle/index.html</a>
         </li>
         
         <li>
@@ -551,7 +486,7 @@ function addClass(id){
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://tangzhihui520.github.io/play-game/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://tangzhihui520.github.io/play-game/puzzle/" alt="微信分享二维码"> -->
     </div>
 </div>
 
